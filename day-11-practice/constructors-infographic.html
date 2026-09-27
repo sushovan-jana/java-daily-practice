@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constructors in Java - Professional Infographic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background-color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Main Container: 16:9 Landscape Canvas */
+    .infographic-root {
+      width: 1920px;
+      height: 1080px;
+      padding: 40px 48px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* 2x2 Grid of Panels */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 32px;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Card Panels */
+    .panel-card {
+      background: #ffffff;
+      border-radius: 22px;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 12px 35px -6px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top Left Number Badges */
+    .number-badge {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      z-index: 2;
+    }
+
+    .badge-blue { color: #1d4ed8; }
+    .badge-dark { color: #0f172a; }
+    .badge-green { color: #059669; }
+    .badge-orange { color: #ea580c; }
+
+    /* Color Coded Headers */
+    .panel-header {
+      padding: 18px 24px 18px 78px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .header-blue {
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+    }
+
+    .header-dark {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    .header-green {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    }
+
+    .header-orange {
+      background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+    }
+
+    .header-icon {
+      width: 28px;
+      height: 28px;
+      stroke-width: 2.3;
+      flex-shrink: 0;
+    }
+
+    /* Panel Content Area */
+    .panel-body {
+      padding: 24px 30px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      background: #ffffff;
+    }
+
+    .intro-line {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #334155;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    /* Row Lists */
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      justify-content: space-evenly;
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15.5px;
+      line-height: 1.4;
+      color: #1e293b;
+      padding: 11px 16px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border-left: 4px solid #2563eb;
+    }
+
+    .feature-row.green-border {
+      background: #f0fdf4;
+      border-left-color: #10b981;
+      padding: 13px 18px;
+    }
+
+    .feature-row.orange-border {
+      background: #fffbeb;
+      border-left-color: #f59e0b;
+      padding: 18px 20px;
+    }
+
+    .check-svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      stroke-width: 2.7;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    /* Panel 2: Vertical Flow Diagram */
+    .chain-layout {
+      display: flex;
+      align-items: stretch;
+      gap: 24px;
+      height: 100%;
+    }
+
+    .chain-flow {
+      flex: 1.15;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .flow-box {
+      width: 100%;
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #0f172a;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .flow-box.highlight {
+      background: #eff6ff;
+      border-color: #60a5fa;
+      color: #1d4ed8;
+    }
+
+    .flow-box small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13.5px;
+      color: #64748b;
+      margin-top: 3px;
+    }
+
+    .flow-arrow-down {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flow-arrow-down svg {
+      width: 26px;
+      height: 26px;
+      stroke: #475569;
+      stroke-width: 2.6;
+    }
+
+    /* Note Box on Side */
+    .note-callout {
+      flex: 0.95;
+      background: #fff5f5;
+      border: 2px solid #fecaca;
+      border-radius: 16px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .note-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #dc2626;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .note-body-text {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: #991b1b;
+      font-weight: 500;
+    }
+
+    /* Panel 3 & 4 items */
+    .icon-badge-green {
+      width: 24px;
+      height: 24px;
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-badge-orange {
+      width: 28px;
+      height: 28px;
+      color: #ea580c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="infographic-root">
+    <div class="grid-container">
+
+      <!-- ================= PANEL 1: CONSTRUCTORS IN JAVA ================= -->
+      <div class="panel-card">
+        <div class="number-badge badge-blue">1</div>
+        <div class="panel-header header-blue">
+          <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          Constructors in Java
+        </div>
+
+        <div class="panel-body">
+          <p class="intro-line">
+            A constructor initializes an object when it's created — and Java has strict rules about how constructors call each other.
+          </p>
+
+          <div class="list-container">
+            <div class="feature-row">
+              <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Default constructor</strong> — auto-generated by the compiler only if no constructor is defined</span>
+            </div>
+
+            <div class="feature-row">
+              <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><code>this()</code> and <code>super()</code> must be the <strong>FIRST</strong> statement in a constructor, or it's a compile-time error</span>
+            </div>
+
+            <div class="feature-row">
+              <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><code>this()</code> chains constructors within the <strong>same class</strong></span>
+            </div>
+
+            <div class="feature-row">
+              <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><code>super()</code> chains to the <strong>parent class's constructor</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= PANEL 2: CONSTRUCTOR CHAIN ================= -->
+      <div class="panel-card">
+        <div class="number-badge badge-dark">2</div>
+        <div class="panel-header header-dark">
+          <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Constructor Chain
+        </div>
+
+        <div class="panel-body">
+          <div class="chain-layout">
+            <!-- Vertical Flow Diagram -->
+            <div class="chain-flow">
+              <div class="flow-box highlight">
+                Object class (java.lang)
+                <small>Ultimate root of all Java classes</small>
+              </div>
+
+              <div class="flow-arrow-down">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+              </div>
+
+              <div class="flow-box">
+                Parent class constructor
+                <small>Executes first via super()</small>
+              </div>
+
+              <div class="flow-arrow-down">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+              </div>
+
+              <div class="flow-box">
+                Child class constructor
+                <small>Executes after parent initialization</small>
+              </div>
+            </div>
+
+            <!-- Note Box -->
+            <div class="note-callout">
+              <div class="note-header">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Important Rule
+              </div>
+              <p class="note-body-text">
+                If parent has <strong>ONLY</strong> a parameterized constructor, child <strong>MUST</strong> call <code>super(...)</code> explicitly — or compile-time error.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= PANEL 3: KEY TAKEAWAYS ================= -->
+      <div class="panel-card">
+        <div class="number-badge badge-green">3</div>
+        <div class="panel-header header-green">
+          <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          Key Takeaways
+        </div>
+
+        <div class="panel-body">
+          <div class="list-container">
+            <div class="feature-row green-border">
+              <div class="icon-badge-green">
+                <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span><code>this()</code> / <code>super()</code> must be the <strong>first line</strong> in a constructor</span>
+            </div>
+
+            <div class="feature-row green-border">
+              <div class="icon-badge-green">
+                <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Every object's construction <strong>chains up to Object class</strong></span>
+            </div>
+
+            <div class="feature-row green-border">
+              <div class="icon-badge-green">
+                <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span><strong>No default constructor</strong> is generated once you define any constructor</span>
+            </div>
+
+            <div class="feature-row green-border">
+              <div class="icon-badge-green">
+                <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Explicit <code>super()</code> call is required when parent has <strong>no no-arg constructor</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= PANEL 4: WHY LOGGING MATTERS ================= -->
+      <div class="panel-card">
+        <div class="number-badge badge-orange">4</div>
+        <div class="panel-header header-orange">
+          <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Why Logging Matters
+        </div>
+
+        <div class="panel-body">
+          <div class="list-container">
+            <div class="feature-row orange-border">
+              <div class="icon-badge-orange">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <span><strong>Log files record what actually happened</strong> when an application runs</span>
+            </div>
+
+            <div class="feature-row orange-border">
+              <div class="icon-badge-orange">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <span><strong>More reliable than print statements</strong> for tracking issues in production</span>
+            </div>
+
+            <div class="feature-row orange-border">
+              <div class="icon-badge-orange">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <span><strong>Widely used to debug and monitor</strong> real-world applications</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
