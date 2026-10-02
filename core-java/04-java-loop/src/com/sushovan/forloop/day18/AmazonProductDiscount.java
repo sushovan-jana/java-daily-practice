@@ -15,7 +15,7 @@ public class AmazonProductDiscount {
 //		storing objects in an array of type AmazonProduct
 		AmazonProduct[] products = new AmazonProduct[] { p1, p2, p3, p4, p5, p6, p7 };
 		
-		System.out.println(" Retrieving the products whose prize is above 5k and ");
+		System.out.println(" Retrieving the products whose prize is above 5k and category is Electronics");
 //		retrieve the products whose prize is above 5k and category is Electronics
 		
 		for (int i = 0; i < products.length; i++) {
@@ -34,4 +34,6 @@ public class AmazonProductDiscount {
 
 	}
 
+	
+	
 }
