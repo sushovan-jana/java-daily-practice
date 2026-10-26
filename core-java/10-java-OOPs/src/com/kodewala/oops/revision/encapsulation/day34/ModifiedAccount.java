@@ -1,6 +1,7 @@
 package com.kodewala.oops.revision.encapsulation.day34;
 
 public class ModifiedAccount {
+	@SuppressWarnings("unused")
 	private int accountBalance;
 	
 	public void credit() {
