@@ -36,3 +36,5 @@ public interface IDiscount {
 	 */
 	public abstract void calculateDiscountTax(int tax);
 }
+
+

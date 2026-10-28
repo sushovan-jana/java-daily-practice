@@ -35,3 +35,5 @@ public class Driver {
 		((FlightBooking) discount1).doSomething();
 	}
 }
+
+
