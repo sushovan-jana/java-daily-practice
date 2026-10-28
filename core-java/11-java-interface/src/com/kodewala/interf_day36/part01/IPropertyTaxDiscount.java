@@ -1,4 +1,4 @@
-package com.kodewala.interf_day35.part01;
+package com.kodewala.interf_day36.part01;
 
 /**
  * Defines the contract for discount-related operations and discount tax in
@@ -20,7 +20,7 @@ package com.kodewala.interf_day35.part01;
  * </p>
  * 
  * @author Sushovan Jana
- * @see com.kodewala.interf_day35.part01.IDiscount
+ * @see com.kodewala.interf_day36.part01.IDiscount
  */
 public interface IPropertyTaxDiscount extends IDiscount {
 	/**

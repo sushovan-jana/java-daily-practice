@@ -1,4 +1,4 @@
-package com.kodewala.interf_day35.part01;
+package com.kodewala.interf_day36.part01;
 
 /**
  * Bus booking implementation of the {@link IDiscount} contract.
@@ -8,7 +8,7 @@ package com.kodewala.interf_day35.part01;
  * yet.</p>
  *
  * @author Sushovan Jana
- * @see com.kodewala.interf_day35.part01.IDiscount
+ * @see com.kodewala.interf_day36.part01.IDiscount
  */
 public class BusBooking implements IDiscount {
 

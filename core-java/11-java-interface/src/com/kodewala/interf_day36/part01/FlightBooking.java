@@ -1,4 +1,4 @@
-package com.kodewala.interf_day35.part01;
+package com.kodewala.interf_day36.part01;
 
 /**
  * Flight booking implementation of the {@link IDiscount} contract.
@@ -8,7 +8,7 @@ package com.kodewala.interf_day35.part01;
  * methods.</p>
  *
  * @author Sushovan Jana
- * @see com.kodewala.interf_day35.part01.IDiscount
+ * @see com.kodewala.interf_day36.part01.IDiscount
  */
 public class FlightBooking implements IDiscount {
 

@@ -1,4 +1,4 @@
-package com.kodewala.interf_day35.part01;
+package com.kodewala.interf_day36.part01;
 
 /**
  * Defines the contract for discount-related operations.

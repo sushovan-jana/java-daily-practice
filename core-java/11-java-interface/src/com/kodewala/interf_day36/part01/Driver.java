@@ -1,13 +1,13 @@
-package com.kodewala.interf_day35.part01;
+package com.kodewala.interf_day36.part01;
 
 /**
  * Demonstrates programming to an interface by using {@link IDiscount} to work
  * with its implementation classes.
  *
  * @author Sushovan Jana
- * @see com.kodewala.interf_day35.part01.IDiscount
- * @see com.kodewala.interf_day35.part01.FlightBooking
- * @see com.kodewala.interf_day35.part01.BusBooking
+ * @see com.kodewala.interf_day36.part01.IDiscount
+ * @see com.kodewala.interf_day36.part01.FlightBooking
+ * @see com.kodewala.interf_day36.part01.BusBooking
  */
 public class Driver {
 
