@@ -23,7 +23,7 @@ public interface IAccount //extends IAccountMgmt // If we try to extend another 
 	 * @param no arg
 	 * @return void
 	 */
-	void openAccount();
+	String openAccount(String name, String address, int balance);
 	/**
 	 * It's a defender method
 	 */

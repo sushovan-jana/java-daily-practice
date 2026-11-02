@@ -5,11 +5,14 @@ public class Driver {
 		/**
 		 * Lamda symbol
 		 */
-		IAccount account = () -> {
-			System.out.println(" Opening account");
+		IAccount account = (name, address, balance) -> {
+			System.out.println(" Account opened, details are below : ");
+			return " Name : " + name + " || Address : " + address + " || Balance : " + balance;
 		};
 		
-		account.openAccount();
+		String openAccountString = account.openAccount("Sushovan", "BTM LAYOUT, BANGALORE", 3100);
+		System.out.println(openAccountString);
+
 		
 	}
 }
