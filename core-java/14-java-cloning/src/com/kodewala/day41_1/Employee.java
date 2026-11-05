@@ -38,7 +38,9 @@ public class Employee implements Cloneable { // level 1
 	
 	@Override
 	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
+		Employee clonedEmp = (Employee) super.clone();
+		clonedEmp.address = (Address) address.clone();
+		return clonedEmp;
 	}
 
 }

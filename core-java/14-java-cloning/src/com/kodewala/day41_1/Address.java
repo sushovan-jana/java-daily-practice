@@ -1,6 +1,8 @@
 package com.kodewala.day41_1;
 
-public class Address { // level 2
+
+
+public class Address implements Cloneable { // level 2
 	private String line1; 
 	private String line2; 
 	private String city;
@@ -34,6 +36,11 @@ public class Address { // level 2
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 }
