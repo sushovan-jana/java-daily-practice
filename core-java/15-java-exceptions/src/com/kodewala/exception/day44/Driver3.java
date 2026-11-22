@@ -13,6 +13,7 @@ public class Driver3 {
 		int amount = 100;
 		try {
 //			Risky line --> Code whcih may throw an exception
+			@SuppressWarnings("unused")
 			int result = amount / 0; // ArithmeticException
 			System.out.println(name.length()); // in this line exception occured
 			
