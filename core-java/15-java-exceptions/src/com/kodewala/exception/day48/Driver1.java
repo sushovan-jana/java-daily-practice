@@ -25,7 +25,7 @@ public class Driver1 {
 		} catch (FileNotFoundException e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (@SuppressWarnings("hiding") IOException e) {
 			e.printStackTrace();
 		} finally {
 			System.out.println(" Finally executed");
