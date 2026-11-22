@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Driver1 {
+	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		String fileName = "text.xls";
 		FileOutputStream fis = null;
